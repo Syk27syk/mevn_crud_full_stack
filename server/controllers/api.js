@@ -48,18 +48,18 @@ module.exports = class API {
                 fs.unlinkSync("./uploads/" + req.body.old_image);
             } catch (err) {
                 console.log(err);
-            } else {
-                new_image = req.body.old_image;
-            }
-            const newPost = req.body;
-            newPost.image = new_image;
+            } 
+        }else {
+            new_image = req.body.old_image;
+        }
+        const newPost = req.body;
+        newPost.image = new_image;
 
-            try {
-                await Post.findByIdAndUpdate(id, newPost);
-                reststatus(200).json({ message: "Post updated successfully!" });
-            } catch (err) {
-                res.status(404).json({ message: err.message });
-            }
+        try {
+            await Post.findByIdAndUpdate(id, newPost);
+            reststatus(200).json({ message: "Post updated successfully!" });
+        } catch (err) {
+            res.status(404).json({ message: err.message });
         }
     }
     // delete a post
