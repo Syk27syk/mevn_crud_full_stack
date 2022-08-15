@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 router.get('/', API.fetchAllPost);
 router.get('/:id', API.fetchPostByID);
 router.post('/', upload, API.createPost);
-router.patch('/', API.updatePost);
+router.patch('/', upload API.updatePost);
 router.delete('/', API.deletePost);
 
 module.exports = router;
